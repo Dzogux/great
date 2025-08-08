@@ -1,0 +1,126 @@
+﻿Here's the **step-by-step breakdown** of all essential SDK installations, separated into individual commands for precise control:
+
+---
+
+### **1. Install Modern Android Platforms (API 21+)**
+```bash
+# API 36 (Baklava)
+yes | sdkmanager "platforms;android-36"
+
+# API 35 (VanillaCream)
+yes | sdkmanager "platforms;android-35"
+
+# API 34 (UpsideDownCake)
+yes | sdkmanager "platforms;android-34"
+
+# API 33 (Tiramisu)
+yes | sdkmanager "platforms;android-33"
+
+# API 32 (Snow Cone)
+yes | sdkmanager "platforms;android-32"
+
+# API 31 (Android 12L)
+yes | sdkmanager "platforms;android-31"
+```
+
+---
+
+### **2. Install System Images (For Emulator)**
+```bash
+# Google Play x86_64 Image (API 36)
+yes | sdkmanager "system-images;android-36;google_apis_playstore;x86_64"
+
+# Default x86_64 Image (API 34)
+yes | sdkmanager "system-images;android-34;google_apis;x86_64"
+```
+
+---
+
+### **3. Install Build Tools**
+```bash
+# Latest 3 versions
+yes | sdkmanager "build-tools;36.0.0"
+yes | sdkmanager "build-tools;35.0.1"
+yes | sdkmanager "build-tools;34.0.0"
+```
+
+---
+
+### **4. Core Tools**
+```bash
+# Platform tools (adb, fastboot)
+yes | sdkmanager "platform-tools"
+
+# Command-line tools
+yes | sdkmanager "cmdline-tools;latest"
+
+# Emulator
+yes | sdkmanager "emulator"
+
+# SDK Patcher
+yes | sdkmanager "patcher;v4"
+```
+
+---
+
+### **5. Extended/OEM-Specific Packages (Optional)**
+```bash
+# API 35 Extensions
+yes | sdkmanager "platforms;android-35-ext14"
+yes | sdkmanager "platforms;android-35-ext15"
+
+# API 34 Extensions
+yes | sdkmanager "platforms;android-34-ext8"
+yes | sdkmanager "platforms;android-34-ext10"
+```
+
+---
+
+### **6. Uninstall Obsolete Packages (API 20 and Below)**
+```bash
+# KitKat and older
+yes | sdkmanager --uninstall "platforms;android-20"
+yes | sdkmanager --uninstall "platforms;android-19"
+yes | sdkmanager --uninstall "platforms;android-18"
+# ... (add more if needed)
+```
+
+---
+
+### **Verification Commands**
+```bash
+# List installed packages
+sdkmanager --list_installed
+
+# Check disk usage
+du -sh $ANDROID_HOME/*
+```
+
+---
+
+### **Troubleshooting Tips**
+1. If a command fails:
+   ```bash
+   # Retry with verbose logging
+   sdkmanager "platforms;android-36" --verbose
+   ```
+2. For network issues:
+   ```bash
+   # Use a mirror
+   sdkmanager --no_https --proxy=http --proxy_host=mirrors.neusoft.edu.cn --proxy_port=80 "platforms;android-36"
+   ```
+
+---
+
+### **Next Steps**
+1. Test each command one by one.
+2. After installation, create an emulator:
+   ```bash
+   avdmanager create avd -n "Test_Device" -k "system-images;android-36;google_apis_playstore;x86_64"
+   ```
+3. Launch it with:
+   ```bash
+   emulator -avd Test_Device -no-boot-anim
+   ```
+
+Let me know which command fails (if any), and I'll provide a targeted fix!
