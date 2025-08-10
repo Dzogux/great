@@ -1,5 +1,5 @@
 ﻿Here's the **step-by-step breakdown** of all essential SDK installations, separated into individual commands for precise control:
-
+bref
 ---
 
 ### **1. Install Modern Android Platforms (API 21+)**
